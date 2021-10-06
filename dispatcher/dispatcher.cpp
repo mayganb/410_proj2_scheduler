@@ -12,19 +12,14 @@
 	//if nothing on CPU returns an uninitialized PCB
 PCB Dispatcher::get_from_CPU(){
 	PCB value = cpu->get_process_off_core();
-	if(is_valid_job_on_cpu){
-		is_valid_job_on_cpu = value.process_number == UNINITIALIZED;
-	}
+	is_valid_job_on_cpu = value.process_number == UNINITIALIZED;
 	return value;
 }
 
 	//place the current process on the CPU for execution
 void Dispatcher::put_on_CPU(PCB  &process){
-	if(!process.isEmpty()){
-		cpu->put_process_on_core(process);
-		is_valid_job_on_cpu = true;
-	}
-
+	cpu->put_process_on_core(process);
+	is_valid_job_on_cpu = true;
 }
 
 	//is CPU idle or working

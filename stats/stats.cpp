@@ -24,7 +24,7 @@ Stats::Stats(std::vector<PCB> &finished_vector){
 	//if there are 10 processes in vector, should print 10 lines
 void Stats::showAllProcessInfo(){
 	for(int i = 0; i < vec->size();i++){
-		cout<<"CPU time:" << vec->at(i).required_cpu_time << " arrived:" << vec->at(i).arrival_time << " started:" << vec->at(i).start_time << " finished:" << vec->at(i).finish_time;
+		cout<<"CPU time:" << vec->at(i).required_cpu_time << " arrived:" << vec->at(i).arrival_time << " started:" << vec->at(i).start_time << " finished:" << vec->at(i).finish_time << endl;
 	}
 }
 
@@ -33,7 +33,7 @@ void Stats::showAllProcessInfo(){
 	//response_time per process = start_time - arrival_time
 	//this funtion returns the average over all processes
 float Stats::get_av_response_time(){
-	int sum = 0;
+	float sum = 0;
 	if(vec->size() == 0){
 		return 0.0;
 	}
@@ -48,7 +48,7 @@ float Stats::get_av_response_time(){
 	//turnaround time per process = finish_time - arrival_time
 	//this funtion returns the average over all processes
 float Stats::get_av_turnaround_time(){
-	int sum = 0;
+	float sum = 0;
 	if(vec->size() == 0){
 		return 0.0;
 	}
@@ -63,7 +63,7 @@ float Stats::get_av_turnaround_time(){
 	//wait time per process = finish_time - arrival_time-required_CPU_time
 	//this funtion returns the average over all processes
 float Stats::get_av_wait_time(){
-	int sum = 0;
+	float sum = 0;
 	if(vec->size() == 0){
 		return 0.0;
 	}
