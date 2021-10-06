@@ -12,7 +12,6 @@ using namespace std;
 
 
 
-
 	//add a process, either a new one or one that
 	//had been running on the CPU and has been preempted
 void Scheduler::add(PCB p){
@@ -40,13 +39,12 @@ bool Scheduler::isEmpty(){
 	//true - switch processes
 	//false - do not switch
 bool Scheduler::time_to_switch_processes(int tick_count, PCB &p){
-	if(p.remaining_cpu_time<=0 or preemptive && tick_count - p.start_time >= time_slice){
+	if(p.remaining_cpu_time<=0 || preemptive && tick_count - p.start_time >= time_slice){
 		return true;
 	}
 	return false;
 }
 void Scheduler::sort() {
-	return;
 }
 
 

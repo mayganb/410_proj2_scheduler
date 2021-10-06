@@ -11,11 +11,9 @@
 	//pull current process (if any) off CPU and return it
 	//if nothing on CPU returns an uninitialized PCB
 PCB Dispatcher::get_from_CPU(){
-	PCB value;
+	PCB value = cpu->get_process_off_core();
 	if(is_valid_job_on_cpu){
-		is_valid_job_on_cpu = false;
-		return cpu->get_process_off_core();
-
+		is_valid_job_on_cpu = value.process_number == UNINITIALIZED;
 	}
 	return value;
 }

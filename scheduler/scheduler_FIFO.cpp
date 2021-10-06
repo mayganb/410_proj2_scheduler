@@ -16,11 +16,6 @@ using namespace std;
 
 	//override base class behaviour if necessary, otherwise call it
 bool  Scheduler_FIFO::time_to_switch_processes(int tick_count, PCB &p){
-//	if(p.remaining_cpu_time <= 0){
-//		return true;
-//	}
-//	return false;
-
 	return time_to_switch_processes(tick_count,p);
 }
 

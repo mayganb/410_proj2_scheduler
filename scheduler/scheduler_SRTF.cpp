@@ -18,8 +18,13 @@ using namespace std;
 	//override base class behaviour if necessary, otherwise call it
 bool Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p){
 	sort();
-	if( ready_q->front().remaining_cpu_time > 0 && ready_q->front().remaining_cpu_time < p.remaining_cpu_time && ready_q->front().process_number != p.process_number ){
-		return true;
+	if(ready_q->front().remaining_cpu_time > 0) {
+		if (ready_q->front().process_number != p.process_number ){
+			if (ready_q->front().remaining_cpu_time < p.remaining_cpu_time) {
+				return true;
+			}
+		}
+
 	}
 	return p.remaining_cpu_time <= 0;
 }
