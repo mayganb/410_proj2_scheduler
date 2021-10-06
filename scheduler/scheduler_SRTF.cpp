@@ -19,13 +19,8 @@ using namespace std;
 bool Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p){
 	sort();
 	PCB value = ready_q->front();
-	if(value.remaining_cpu_time > 0) {
-		if (value.process_number != p.process_number ){
-			if (value.remaining_cpu_time < p.remaining_cpu_time) {
-				return true;
-			}
-		}
-
+	if(value.remaining_cpu_time > 0 && value.process_number != p.process_number && value.remaining_cpu_time < p.remaining_cpu_time) {
+		return true;
 	}
 	return p.remaining_cpu_time <= 0;
 }
